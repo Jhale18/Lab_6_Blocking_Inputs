@@ -1,15 +1,36 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.util.Scanner;
+
 public class FuelCosts2 {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        Scanner input = new Scanner(System.in);
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+        double gallons = 0;
+        double milesPerGallon = 0;
+        double pricePerGallon = 0;
+        do {
+            System.out.print("Enter the number of gallons of gas in the tank: ");
+            gallons = input.nextDouble();
+            if (gallons <= 0) {
+                System.out.println("Error: Please enter a positive number.");
+            }
+        } while (gallons <= 0);
+        do {
+            System.out.print("Enter the fuel efficiency in miles per gallon: ");
+            milesPerGallon = input.nextDouble();
+            if (milesPerGallon <= 0) {
+                System.out.println("Error: Please enter a positive number.");
+            }
+        } while (milesPerGallon <= 0);
+        do {
+            System.out.print("Enter the price of gas per gallon: ");
+            pricePerGallon = input.nextDouble();
+            if (pricePerGallon <= 0) {
+                System.out.println("Error: Please enter a positive number.");
+            }
+        } while (pricePerGallon <= 0);
+        double costToDrive100Miles = (100 / milesPerGallon) * pricePerGallon;
+        double distanceWithFullTank = gallons * milesPerGallon;
+        System.out.printf("The cost to drive 100 miles is: $%.2f\n", costToDrive100Miles);
+        System.out.printf("The car can go %.2f miles with a full tank of gas.\n", distanceWithFullTank);
     }
 }
